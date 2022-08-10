@@ -5,7 +5,7 @@ const createError = require("http-errors");
 
 module.exports.obtenerVentas = async (_req, res) => {
   try {
-    const ventas = await Venta.find().sort({ fecha: -1 }).populate({
+    const ventas = await Venta.find().sort({ fecha: 1 }).populate({
       path: "items",
       populate: "producto",
     });
