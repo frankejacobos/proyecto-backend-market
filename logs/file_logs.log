@@ -1,0 +1,24 @@
+
+info: Aug-09-2022 20:53:26: 	Listening on port 3000
+info: Aug-09-2022 20:53:27: 	Database Connection is ready...
+info: Aug-09-2022 20:54:04: 	Listening on port 3000
+info: Aug-09-2022 20:54:05: 	Database Connection is ready...
+info: Aug-09-2022 21:53:44: 	Listening on port 3000
+info: Aug-09-2022 21:53:45: 	Database Connection is ready...
+error: Aug-09-2022 22:31:34: 	"_id" is not allowed
+error: Aug-09-2022 22:32:46: 	"_id" is not allowed
+error: Aug-09-2022 22:33:11: 	"vendedor" is required
+error: Aug-10-2022 00:30:50: 	"unidad" is not allowed to be empty
+info: Aug-10-2022 00:38:25: 	Listening on port 3000
+info: Aug-10-2022 00:38:26: 	Database Connection is ready...
+error: Aug-10-2022 00:39:16: 	"unidad" is not allowed to be empty
+error: Aug-10-2022 00:42:31: 	"categoria" is not allowed to be empty
+error: Aug-10-2022 00:42:39: 	"categoria" is not allowed to be empty
+error: Aug-10-2022 00:45:03: 	"categoria" is not allowed to be empty
+error: Aug-10-2022 00:45:37: 	"categoria" is not allowed to be empty
+error: Aug-10-2022 00:46:22: 	"categoria" is required
+error: Aug-10-2022 00:46:55: 	"categoria" is not allowed to be empty
+error: Aug-10-2022 00:47:15: 	"categoria" is not allowed to be empty
+error: Aug-10-2022 01:03:35: 	"precio_compra" is required
+info: Aug-10-2022 02:02:20: 	Listening on port 3000
+info: Aug-10-2022 02:02:21: 	Database Connection is ready...

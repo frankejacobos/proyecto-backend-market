@@ -1,13 +1,19 @@
-var express = require('express')
-const { obtener_clientes, insertar_cliente, buscar_cliente, actualizar_cliente, eliminar_cliente } = require('../controllers/controlador_cliente')
-const { validar_id } = require('../middlewares/validar_id')
-const { validar_cliente } = require('../middlewares/validar_modelo')
-var router = express.Router()
+const express = require("express");
+const router = express.Router();
+const { validateId } = require("../middlewares/idValidation");
+const { validarCliente } = require("../validations/validarCliente");
+const {
+  obtenerClientes,
+  buscarCliente,
+  insertarCliente,
+  actualizarCliente,
+  eliminarCliente,
+} = require("../controllers/controladorCliente");
 
-router.get('/', [obtener_clientes])
-router.get('/:id', [validar_id, buscar_cliente])
-router.post('/', [validar_cliente, insertar_cliente])
-router.put('/:id', [validar_id, validar_cliente, actualizar_cliente])
-router.delete('/:id', [validar_id, eliminar_cliente])
+router.get("/", obtenerClientes);
+router.get("/:id", validateId, buscarCliente);
+router.post("/", validarCliente, insertarCliente);
+router.put("/:id", validateId, validarCliente, actualizarCliente);
+router.delete("/:id", validateId, eliminarCliente);
 
-module.exports = router
+module.exports = router;

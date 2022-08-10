@@ -1,13 +1,19 @@
-var express = require('express')
-const { obtener_categorias, insertar_categoria, buscar_categoria, actualizar_categoria, eliminar_categoria } = require('../controllers/controlador_categoria')
-const { validar_id } = require('../middlewares/validar_id')
-const { validar_categoria } = require('../middlewares/validar_modelo')
-var router = express.Router()
+const express = require("express");
+const router = express.Router();
+const { validateId } = require("../middlewares/idValidation");
+const { validarCategoria } = require("../validations/validarCategoria");
+const {
+  obtenerCategorias,
+  buscarCategoria,
+  insertarCategoria,
+  actualizarCategoria,
+  eliminarCategoria,
+} = require("../controllers/controladorCategoria");
 
-router.get('/', [obtener_categorias])
-router.get('/:id', [validar_id, buscar_categoria])
-router.post('/', [validar_categoria, insertar_categoria])
-router.put('/:id', [validar_id, validar_categoria, actualizar_categoria])
-router.delete('/:id', [validar_id, eliminar_categoria])
+router.get("/", obtenerCategorias);
+router.get("/:id", [validateId, buscarCategoria]);
+router.post("/", [validarCategoria, insertarCategoria]);
+router.put("/:id", [validateId, validarCategoria, actualizarCategoria]);
+router.delete("/:id", [validateId, eliminarCategoria]);
 
-module.exports = router
+module.exports = router;

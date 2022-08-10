@@ -1,13 +1,19 @@
-var express = require('express')
-const { obtener_distribuidores, insertar_distribuidor, buscar_distribuidor, actualizar_distribuidor, eliminar_distribuidor } = require('../controllers/controlador_distribuidor')
-const { validar_id } = require('../middlewares/validar_id')
-const { validar_distribuidor } = require('../middlewares/validar_modelo')
-var router = express.Router()
+const express = require("express");
+const router = express.Router();
+const { validateId } = require("../middlewares/idValidation");
+const { validarDistribuidor } = require("../validations/validarDistribuidor");
+const {
+  obtenerDistribuidores,
+  obtenerDistribuidor,
+  insertarDistribuidor,
+  actualizarDistribuidor,
+  eliminarDistribuidor,
+} = require("../controllers/controladorDistribuidor");
 
-router.get('/', [obtener_distribuidores])
-router.get('/:id', [validar_id, buscar_distribuidor])
-router.post('/', [validar_distribuidor, insertar_distribuidor])
-router.put('/:id', [validar_id, validar_distribuidor, actualizar_distribuidor])
-router.delete('/:id', [validar_id, eliminar_distribuidor])
+router.get("/", obtenerDistribuidores);
+router.get("/:id", [validateId], obtenerDistribuidor);
+router.post("/", [validarDistribuidor], insertarDistribuidor);
+router.put("/:id", [validateId, validarDistribuidor], actualizarDistribuidor);
+router.delete("/:id", [validateId], eliminarDistribuidor);
 
-module.exports = router
+module.exports = router;

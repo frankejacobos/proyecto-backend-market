@@ -1,13 +1,15 @@
-var express = require('express')
-const { obtener_ventas, insertar_venta, buscar_venta, actualizar_venta, eliminar_venta } = require('../controllers/controlador_venta')
-const { validar_id } = require('../middlewares/validar_id')
-const { validar_venta } = require('../middlewares/validar_modelo')
-var router = express.Router()
+const express = require("express");
+const router = express.Router();
+const { validateId } = require("../middlewares/idValidation");
+const { validarVenta } = require("../validations/validarVenta");
+const {
+  obtenerVentas,
+  obtenerVenta,
+  crearVenta,
+} = require("../controllers/controladorVenta");
 
-router.get('/', [obtener_ventas])
-router.get('/:id', [validar_id, buscar_venta])
-router.post('/', [validar_venta, insertar_venta])
-router.put('/:id', [validar_id, validar_venta, actualizar_venta])
-router.delete('/:id', [validar_id, eliminar_venta])
+router.get("/", obtenerVentas);
+router.get("/:id", [validateId], obtenerVenta);
+router.post("/", [validarVenta], crearVenta);
 
-module.exports = router
+module.exports = router;

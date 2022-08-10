@@ -1,13 +1,19 @@
-var express = require('express')
-const { obtener_productos, insertar_producto, buscar_producto, actualizar_producto, eliminar_producto } = require('../controllers/controlador_producto')
-const { validar_id } = require('../middlewares/validar_id')
-const { validar_producto } = require('../middlewares/validar_modelo')
-var router = express.Router()
+const express = require("express");
+const router = express.Router();
+const { validateId } = require("../middlewares/idValidation");
+const { validarProducto } = require("../validations/validarProducto");
+const {
+  obtenerProductos,
+  buscarProducto,
+  insertarProducto,
+  actualizarProducto,
+  eliminarProducto,
+} = require("../controllers/controladorProducto");
 
-router.get('/', [obtener_productos])
-router.get('/:id', [validar_id, buscar_producto])
-router.post('/', [validar_producto, insertar_producto])
-router.put('/:id', [validar_id, validar_producto, actualizar_producto])
-router.delete('/:id', [validar_id, eliminar_producto])
+router.get("/", obtenerProductos);
+router.get("/:id", [validateId], buscarProducto);
+router.post("/", [validarProducto], insertarProducto);
+router.put("/:id", [validateId, validarProducto], actualizarProducto);
+router.delete("/:id", [validateId], eliminarProducto);
 
-module.exports = router
+module.exports = router;
