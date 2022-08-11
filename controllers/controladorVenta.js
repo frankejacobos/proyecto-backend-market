@@ -61,7 +61,7 @@ module.exports.crearVenta = async (req, res, next) => {
     nuevaVenta.items.forEach(async (itemId) => {
       const item = await ItemVenta.findById(itemId);
       const producto = await Producto.findById(item.producto);
-      producto.cantidad = producto.cantidad - item.cantidad;
+      producto.stock_almacen = producto.stock_almacen - item.cantidad;
       await producto.save();
     });
     if (!nuevaVenta) {
